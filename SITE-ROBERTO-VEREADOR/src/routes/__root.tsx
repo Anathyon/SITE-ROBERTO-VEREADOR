@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
-  Link,
   createRootRouteWithContext,
   HeadContent,
   Scripts,
@@ -17,9 +16,9 @@ function NotFoundComponent() {
         <h1 style={{ fontSize: "4rem", fontWeight: 700 }}>404</h1>
         <h2 style={{ marginTop: "1rem", fontSize: "1.25rem" }}>Página não encontrada</h2>
         <div style={{ marginTop: "1.5rem" }}>
-          <Link to="/" style={{ display: "inline-block", background: "var(--gradient-gold)", color: "var(--navy-deep)", padding: "0.5rem 1.5rem", borderRadius: "9999px", fontWeight: 600 }}>
+          <a href="/" style={{ display: "inline-block", background: "var(--gradient-accent)", color: "var(--teal-deep)", padding: "0.5rem 1.5rem", borderRadius: "9999px", fontWeight: 600 }}>
             Voltar ao início
-          </Link>
+          </a>
         </div>
       </div>
     </div>

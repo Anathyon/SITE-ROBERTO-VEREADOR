@@ -31,21 +31,37 @@ body {
 }
 
 :root {
-  --navy-deep: oklch(0.18 0.06 260);
-  --navy: oklch(0.28 0.09 258);
-  --gold: oklch(0.82 0.15 85);
+  /* Paleta extraída do icon.png */
+  --teal-deep:  #004d5c;          /* primária escura  */
+  --teal:       #006878;          /* primária         */
+  --teal-mid:   #1e7878;          /* variação média   */
+  --coral:      #f0a596;          /* destaque/acento  */
+  --coral-dark: #d4806e;          /* destaque escuro  */
+  --wine:       #781e5a;          /* acento secundário*/
+  --dark:       #1e2a2d;          /* texto principal  */
+  --muted-fg:   #5a7278;          /* texto secundário */
 
-  --background: oklch(0.98 0.005 250);
-  --foreground: oklch(0.18 0.06 260);
-  --card: oklch(1 0 0);
-  --border: oklch(0.9 0.01 250);
-  --muted-fg: oklch(0.5 0.02 258);
-  --secondary-bg: oklch(0.94 0.01 250);
+  /* Superfícies */
+  --background:   #f2f4f4;        /* cinza bem claro  */
+  --foreground:   var(--dark);
+  --card:         #ffffff;
+  --border:       #dde4e6;
+  --secondary-bg: #e8eef0;
 
-  --gradient-hero: radial-gradient(ellipse at 20% 30%, oklch(0.32 0.11 258) 0%, oklch(0.14 0.05 260) 55%, oklch(0.1 0.04 260) 100%);
-  --gradient-gold: linear-gradient(135deg, oklch(0.86 0.16 90), oklch(0.72 0.16 70));
-  --shadow-glow: 0 30px 80px -20px oklch(0.82 0.15 85 / 0.35);
-  --shadow-card: 0 20px 40px -20px oklch(0.18 0.06 260 / 0.15);
+  /* Gradientes */
+  --gradient-hero:   radial-gradient(ellipse at 20% 30%, #006878 0%, #004050 55%, #001e28 100%);
+  --gradient-accent: linear-gradient(135deg, #f0a596, #d4806e);
+  --gradient-teal:   linear-gradient(135deg, #1e7878, #004d5c);
+
+  /* Sombras */
+  --shadow-glow: 0 30px 80px -20px rgba(0, 104, 120, 0.4);
+  --shadow-card: 0 20px 40px -20px rgba(0, 40, 50, 0.15);
+
+  /* Aliases para compatibilidade com componentes existentes */
+  --navy-deep:      var(--teal-deep);
+  --navy:           var(--teal);
+  --gold:           var(--coral);
+  --gradient-gold:  var(--gradient-accent);
 }
 
 h1, h2, h3, h4 {
@@ -71,7 +87,7 @@ body { font-family: var(--font-sans); background: var(--background); color: var(
 .animate-marquee { animation: marquee 40s linear infinite; }
 .animate-float { animation: float-slow 6s ease-in-out infinite; }
 .text-shimmer {
-  background: linear-gradient(90deg, var(--gold) 0%, oklch(1 0 0) 50%, var(--gold) 100%);
+  background: linear-gradient(90deg, var(--coral) 0%, #ffffff 50%, var(--coral) 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -79,4 +95,4 @@ body { font-family: var(--font-sans); background: var(--background); color: var(
   animation: shimmer 4s linear infinite;
 }
 .hero-bg { background: var(--gradient-hero); }
-.gold-gradient { background: var(--gradient-gold); }
+.gold-gradient { background: var(--gradient-accent); }
