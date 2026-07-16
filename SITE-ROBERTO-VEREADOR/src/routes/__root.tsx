@@ -3,61 +3,23 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
-  useRouter,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
-import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import appCss from "../index.css?url";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold">Página não encontrada</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          A página que você procura não existe ou foi movida.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-          >
+    <div style={{ display: "flex", minHeight: "100vh", alignItems: "center", justifyContent: "center", padding: "0 1rem" }}>
+      <div style={{ maxWidth: 400, textAlign: "center" }}>
+        <h1 style={{ fontSize: "4rem", fontWeight: 700 }}>404</h1>
+        <h2 style={{ marginTop: "1rem", fontSize: "1.25rem" }}>Página não encontrada</h2>
+        <div style={{ marginTop: "1.5rem" }}>
+          <Link to="/" style={{ display: "inline-block", background: "var(--gradient-gold)", color: "var(--navy-deep)", padding: "0.5rem 1.5rem", borderRadius: "9999px", fontWeight: 600 }}>
             Voltar ao início
           </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
-  console.error(error);
-  const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
-
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold">Não foi possível carregar esta página</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Algo deu errado. Tente novamente ou volte ao início.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => { router.invalidate(); reset(); }}
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-          >
-            Tentar novamente
-          </button>
-          <a href="/" className="rounded-md border border-input bg-background px-4 py-2 text-sm font-medium hover:bg-accent">
-            Início
-          </a>
         </div>
       </div>
     </div>
@@ -71,28 +33,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Vereador Roberto — Mandato participativo e transparente" },
       { name: "description", content: "Site oficial do Vereador Roberto. Acompanhe matérias, projetos de lei em tramitação, agenda e atividades do mandato." },
-      { name: "author", content: "Vereador Roberto" },
-      { property: "og:title", content: "Vereador Roberto — Mandato participativo e transparente" },
-      { property: "og:description", content: "Site oficial do Vereador Roberto. Acompanhe matérias, projetos de lei em tramitação, agenda e atividades do mandato." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Vereador Roberto — Mandato participativo e transparente" },
-      { name: "twitter:description", content: "Site oficial do Vereador Roberto. Acompanhe matérias, projetos de lei em tramitação, agenda e atividades do mandato." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/02106b42-1d19-4935-9a21-5cda42921a9e/id-preview-4d9a25a4--668bcaa0-5d91-4f4a-a7c6-122f7f4b8b9d.lovable.app-1783971378478.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/02106b42-1d19-4935-9a21-5cda42921a9e/id-preview-4d9a25a4--668bcaa0-5d91-4f4a-a7c6-122f7f4b8b9d.lovable.app-1783971378478.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" },
+      { rel: "icon", href: "/icon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
 });
 
 function RootShell({ children }: { children: ReactNode }) {
