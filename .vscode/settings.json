@@ -1,0 +1,5 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "typescript.tsdk": "SITE-ROBERTO-VEREADOR/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
