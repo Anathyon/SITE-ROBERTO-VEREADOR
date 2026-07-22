@@ -14,11 +14,10 @@ export function Sobre() {
         {/* Texto */}
         <div style={{ flex: "1 1 300px", display: "flex", flexDirection: "column", gap: "1.5rem", fontSize: "1.05rem", color: "var(--muted-fg)", lineHeight: 1.75 }}>
           <p>
-            Nascido e criado na nossa cidade, Roberto Silva é professor de formação e servidor público de vocação. No seu segundo mandato como vereador, atua com foco em{" "}
-            <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>educação, saúde pública e transparência</strong>.
+            José Roberto Moreira Fontenele, conhecido popularmente como <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>Robertinho Moreira</strong>, é martinopolense, vereador e <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>Presidente da Câmara Municipal de Martinópole</strong> no biênio 2025–2026.
           </p>
           <p>
-            O gabinete funciona de portas abertas: cada projeto, cada emenda e cada visita a bairro é documentada e publicada aqui — porque o mandato é do povo.
+            Sua trajetória pública é pautada nos valores da honestidade, do trabalho e do compromisso com o desenvolvimento do município. A frente da Presidência do Poder Legislativo, conduz uma gestão voltada à modernização administrativa, transparência pública e aproximação com a sociedade.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginTop: "0.5rem" }}>
             {SOBRE_BADGES.map((b, i) => {

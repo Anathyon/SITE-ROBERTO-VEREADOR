@@ -30,8 +30,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vereador Roberto — Mandato participativo e transparente" },
-      { name: "description", content: "Site oficial do Vereador Roberto. Acompanhe matérias, projetos de lei em tramitação, agenda e atividades do mandato." },
+      { title: "Vereador Robertinho Moreira — Presidente da Câmara Municipal de Martinópole" },
+      { name: "description", content: "Site oficial do Vereador e Presidente da Câmara Municipal de Martinópole, José Roberto Moreira Fontenele (Robertinho). Acompanhe os melhores feitos, matérias legislativas e atuação oficial." },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

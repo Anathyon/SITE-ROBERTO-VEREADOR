@@ -1,5 +1,5 @@
-import { Instagram, Facebook, Megaphone } from "lucide-react";
-import { NAV } from "../../data";
+import { ExternalLink, Instagram, Facebook } from "lucide-react";
+import { NAV, SOCIAL_LINKS } from "../../data";
 import { TikTok } from "../ui/TikTok";
 
 export function Footer() {
@@ -17,11 +17,11 @@ export function Footer() {
           {/* Brand */}
           <div style={{ flex: "2 1 260px" }}>
             <a href="#top" style={{ display: "inline-block", textDecoration: "none" }}>
-              <img src="/logo.png" alt="Vereador Roberto"
+              <img src="/logo.png" alt="Vereador Robertinho Moreira"
                 style={{ height: 44, width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)" }} />
             </a>
             <p style={{ marginTop: "1.5rem", color: "rgba(255,255,255,0.55)", lineHeight: 1.7, maxWidth: 380, fontSize: "0.9rem" }}>
-              Um mandato de portas abertas. Feito para escutar, propor e prestar contas.
+              Gabinete do Vereador e Presidente da Câmara Municipal de Martinópole, José Roberto Moreira Fontenele (Robertinho). Transparência, diálogo e compromisso social.
             </p>
           </div>
 
@@ -45,14 +45,14 @@ export function Footer() {
           {/* Redes */}
           <div style={{ flex: "1 1 140px" }}>
             <div style={{ fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--coral)", marginBottom: "1rem" }}>
-              Redes
+              Redes Oficiais
             </div>
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
               {[
-                { icon: Instagram, href: "https://instagram.com", l: "Instagram" },
-                { icon: Facebook, href: "https://facebook.com", l: "Facebook" },
-                { icon: TikTok, href: "https://tiktok.com", l: "TikTok" },
-                { icon: Megaphone, href: "#", l: "Newsletter" },
+                { icon: Instagram, href: SOCIAL_LINKS.instagram, l: "Instagram (@robertinhoce)" },
+                { icon: Facebook, href: SOCIAL_LINKS.facebook, l: "Facebook (/robertinhoce)" },
+                { icon: TikTok, href: SOCIAL_LINKS.tiktok, l: "TikTok (@robertinhoce)" },
+                { icon: ExternalLink, href: SOCIAL_LINKS.camara, l: "Câmara de Martinópole" },
               ].map((s) => (
                 <li key={s.l}>
                   <a href={s.href} target="_blank" rel="noreferrer" className="footer-link"
@@ -70,8 +70,8 @@ export function Footer() {
           display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "0.75rem",
           fontSize: "0.75rem", color: "rgba(255,255,255,0.35)",
         }}>
-          <span>© {new Date().getFullYear()} Gabinete do Vereador Roberto. Todos os direitos reservados.</span>
-          <span>Conteúdo institucional · Este site não veicula propaganda eleitoral.</span>
+          <span>© {new Date().getFullYear()} Gabinete do Vereador Robertinho Moreira · Martinópole - CE. Todos os direitos reservados.</span>
+          <span>Conteúdo institucional e informativo público.</span>
         </div>
       </div>
 
@@ -81,3 +81,4 @@ export function Footer() {
     </footer>
   );
 }
+

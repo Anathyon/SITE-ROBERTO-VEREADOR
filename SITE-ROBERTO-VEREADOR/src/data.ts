@@ -1,70 +1,91 @@
 export const NAV = [
   { href: "#sobre", label: "Sobre" },
   { href: "#materias", label: "Matérias" },
-  { href: "#tramitacao", label: "Tramitação" },
-  { href: "#agenda", label: "Agenda" },
+  { href: "#camara-oficial", label: "Câmara Oficial" },
+  { href: "#feitos", label: "Melhores Feitos" },
   { href: "#transparencia", label: "Transparência" },
   { href: "#contato", label: "Contato" },
 ];
 
+export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/robertinhoce/",
+  facebook: "https://www.facebook.com/robertinhoce",
+  tiktok: "https://www.tiktok.com/@robertinhoce",
+  camara: "https://www.camaramartinopole.ce.gov.br/parlamentar/352/jose-roberto-moreira-fontenele",
+};
+
 export const STATS = [
-  { n: "42", l: "Projetos apresentados" },
-  { n: "18", l: "Leis aprovadas" },
-  { n: "126", l: "Bairros visitados" },
+  { n: "93", l: "Matérias legislativas" },
+  { n: "94.9%", l: "Assiduidade em sessões" },
+  { n: "2025-2026", l: "Presidência da Câmara" },
 ];
 
 export const SOBRE_BADGES = [
-  { label: "Ficha limpa" },
-  { label: "Comissões: Educação e Saúde" },
-  { label: "Bloco Independente" },
-  { label: "Patrimônio público declarado" },
+  { label: "Presidente da Câmara (2025–2026)" },
+  { label: "55ª Legislatura (2025–2028)" },
+  { label: "Martinopolense Nato" },
+  { label: "Defensor da Transparência" },
 ];
 
 export const MATERIAS = [
-  { n: "PL 034/2025", tag: "Educação", title: "Programa de reforço escolar em contraturno na rede municipal", date: "12 mar 2025" },
-  { n: "PL 022/2025", tag: "Saúde", title: "Ampliação do atendimento em UBS aos sábados", date: "28 fev 2025" },
-  { n: "PL 011/2025", tag: "Mobilidade", title: "Passe livre estudantil para universitários da rede pública", date: "14 fev 2025" },
-  { n: "PL 003/2025", tag: "Transparência", title: "Portal do vereador — publicação obrigatória de emendas", date: "05 fev 2025" },
+  { n: "Ofício 16/2026", tag: "Aprovação", title: "Envio e acompanhamento de matérias aprovadas na Câmara", date: "11 jun 2026" },
+  { n: "Ofício 15/2026", tag: "Legislativo", title: "Modernização e normatização administrativa dos trabalhos", date: "10 jun 2026" },
+  { n: "Ofício 14/2026", tag: "Transparência", title: "Publicação e divulgação de relatórios de gestão pública", date: "28 mai 2026" },
+  { n: "Ofício 07/2026", tag: "Comunidade", title: "Indicações e requerimentos de melhorias para o município", date: "30 abr 2026" },
 ];
 
-export const TRAMITACAO_STEPS = [
-  { l: "Protocolo", d: "Projeto apresentado no plenário", state: "done" },
-  { l: "Comissões", d: "Análise técnica e jurídica", state: "done" },
-  { l: "Emendas", d: "Debate público e ajustes", state: "active" },
-  { l: "Plenário", d: "Votação pelos vereadores", state: "pending" },
-  { l: "Sanção", d: "Promulgação pelo Executivo", state: "pending" },
-];
-
-export const BILLS = [
-  { n: "PL 034/2025", t: "Reforço escolar em contraturno", stage: 3, updated: "há 2 dias" },
-  { n: "PL 022/2025", t: "UBS aos sábados", stage: 4, updated: "há 6 dias" },
-  { n: "PL 011/2025", t: "Passe livre estudantil", stage: 2, updated: "há 3 semanas" },
+export const MELHORES_FEITOS = [
+  {
+    title: "Gestão na Presidência da Câmara",
+    category: "Modernização & Transparência",
+    desc: "Em 1º de janeiro de 2025, assumiu a Presidência promovendo modernização administrativa, valorização do Poder Legislativo, transparência e cursos de capacitação.",
+    tag: "Biênio 2025–2026",
+  },
+  {
+    title: "Alta Produção Legislativa",
+    category: "Atuação em Plenário",
+    desc: "Autoria de 93 de 355 matérias na Câmara Municipal de Martinópole — representando 26,20% de toda a produção legislativa do município.",
+    tag: "26,20% das Matérias",
+  },
+  {
+    title: "Compromisso e Assiduidade",
+    category: "Presença Parlamentar",
+    desc: "Frequência destacada de 94,87% em sessões ordinárias e extraordinárias (74 de 78 sessões), garantindo presença ativa nas decisões importantes.",
+    tag: "94,87% de Presença",
+  },
+  {
+    title: "Aproximação com a Comunidade",
+    category: "Educação & Sociedade",
+    desc: "Criação de programas de integração entre o Parlamento e as escolas, audiências públicas e ampliação dos canais de atendimento direto aos moradores.",
+    tag: "Cidadania Ativa",
+  },
 ];
 
 export const FEED_POSTS = [
-  { t: "Aprovamos por unanimidade a criação do Programa Cidade Escuta.", tag: "Plenário" },
-  { t: "Reunião com moradores do Jd. das Palmeiras sobre iluminação pública.", tag: "Bairro" },
-  { t: "Discurso na tribuna sobre valorização dos professores da rede.", tag: "Tribuna" },
-  { t: "Entrega da emenda que reformou o CRAS da região norte.", tag: "Entrega" },
-  { t: "Café da manhã com lideranças comunitárias no Parque das Flores.", tag: "Comunidade" },
-  { t: "Fiscalização de contrato de merenda escolar no Centro Educacional.", tag: "Fiscalização" },
+  { t: "Sessão Ordinária conduzida com aprovação de pautas cruciais para Martinópole.", tag: "Presidência" },
+  { t: "Visita e diálogo constante com moradores das áreas urbanas e rurais.", tag: "Comunidade" },
+  { t: "Fortalecimento dos canais de transparência pública e e-SIC na Câmara.", tag: "Transparência" },
+  { t: "Discurso e mediação de debates prioritários para a educação e saúde local.", tag: "Plenário" },
+  { t: "Iniciativas de integração da juventude com as atividades do Poder Legislativo.", tag: "Cidadania" },
+  { t: "Fiscalização dos recursos públicos e prestação de contas continuada.", tag: "Fiscalização" },
 ];
 
 export const TRANSPARENCIA_CARDS = [
-  { t: "Emendas parlamentares", d: "Cada real destinado a saúde, educação e infraestrutura.", n: "R$ 4,2M" },
-  { t: "Presença em plenário", d: "Histórico de presença nas sessões e comissões.", n: "98%" },
-  { t: "Votações nominais", d: "Como votei em cada projeto — sem esconder.", n: "312" },
-  { t: "Prestação de contas", d: "Relatório mensal aberto ao cidadão.", n: "Mensal" },
+  { t: "Matérias apresentadas", d: "Participação expressiva no total de produções do município.", n: "93" },
+  { t: "Presença em sessões", d: "Compromisso constante com as votações no plenário.", n: "94.9%" },
+  { t: "Participação total", d: "Representação de 26,20% de toda a produção da Câmara.", n: "26.2%" },
+  { t: "Presidência eleita", d: "Liderando o Poder Legislativo no biênio 2025–2026.", n: "2025-26" },
 ];
 
 export const CONTATO_INFO = [
-  { t: "Gabinete 217", d: "Câmara Municipal — Praça da República, s/nº — Centro" },
-  { t: "Telefone", d: "(11) 4000-1234 · WhatsApp (11) 99000-1234" },
-  { t: "E-mail", d: "gabinete@vereadorroberto.com.br" },
-  { t: "Atendimento", d: "Segunda a sexta, das 09h às 18h" },
+  { t: "Câmara Municipal de Martinópole", d: "Praça Principal, s/nº — Centro, Martinópole - CE" },
+  { t: "E-mail Institucional", d: "robertinhomoreiraofc@camaramartinopole.ce.gov.br" },
+  { t: "Redes Sociais Oficiais", d: "@robertinhoce (Instagram, Facebook e TikTok)" },
+  { t: "Atendimento ao Cidadão", d: "Segunda a sexta-feira, durante o expediente da Câmara" },
 ];
 
 export const MARQUEE_ITEMS = [
-  "Transparência", "Escuta ativa", "Saúde pública", "Educação",
-  "Mobilidade", "Segurança", "Habitação", "Desenvolvimento social",
+  "Martinópole - CE", "Transparência", "Educação Legislativa", "Presidência 2025-2026",
+  "Compromisso Social", "Fiscalização", "Voz da Comunidade", "Desenvolvimento",
 ];
+

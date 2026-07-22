@@ -59,13 +59,13 @@ export function Hero() {
             <motion.p
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.8 }}
               style={{ marginTop: "1.5rem", fontSize: "1.05rem", color: "rgba(255,255,255,0.7)", lineHeight: 1.7, maxWidth: 520 }}>
-              Um mandato aberto, participativo e acessível. Aqui você acompanha em tempo real cada projeto, cada voto e cada agenda do gabinete.
+              Um mandato aberto, participativo e transparente. Acompanhe o trabalho e a atuação do Presidente Robertinho Moreira em defesa da população de Martinópole.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.6 }}
               style={{ marginTop: "2.5rem", display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <a href="#tramitacao" style={{
+              <a href="#camara-oficial" style={{
                 display: "inline-flex", alignItems: "center", gap: "0.5rem",
                 background: "var(--gradient-accent)", color: "var(--teal-deep)",
                 fontWeight: 600, padding: "0.85rem 1.75rem", borderRadius: 9999,
@@ -73,9 +73,9 @@ export function Hero() {
               }}
                 onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
                 onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")}>
-                Acompanhar projetos <ArrowRight size={16} />
+                Portal da Câmara <ArrowRight size={16} />
               </a>
-              <a href="#agenda" style={{
+              <a href="#feitos" style={{
                 display: "inline-flex", alignItems: "center", gap: "0.5rem",
                 border: "1px solid rgba(255,255,255,0.3)", color: "white",
                 padding: "0.85rem 1.75rem", borderRadius: 9999,
@@ -83,7 +83,7 @@ export function Hero() {
               }}
                 onMouseEnter={e => (e.currentTarget.style.background = "rgba(255,255,255,0.1)")}
                 onMouseLeave={e => (e.currentTarget.style.background = "transparent")}>
-                <Play size={15} /> Ver agenda
+                <Play size={15} /> Ver Feitos do Mandato
               </a>
             </motion.div>
 
@@ -119,16 +119,16 @@ export function Hero() {
                 border: "1px solid rgba(240,165,150,0.3)",
                 boxShadow: "var(--shadow-glow)",
               }}>
-                <img src="/FOTO RO BERTINHO.png" alt="Vereador Roberto" style={{ width: "100%", height: "auto", display: "block" }} />
+                <img src="/FOTO RO BERTINHO.png" alt="Vereador Robertinho Moreira" style={{ width: "100%", height: "auto", display: "block" }} />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,30,40,0.65), transparent)" }} />
                 <div style={{
                   position: "absolute", bottom: 24, left: 24, right: 24,
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                 }}>
                   <div>
-                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", color: "white" }}>Roberto Silva</div>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", color: "white" }}>Robertinho Moreira</div>
                     <div style={{ fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--coral)" }}>
-                      Vereador · Câmara Municipal
+                      Presidente da Câmara Municipal · Martinópole - CE
                     </div>
                   </div>
                   <div style={{

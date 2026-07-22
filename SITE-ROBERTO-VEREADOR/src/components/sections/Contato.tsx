@@ -1,9 +1,9 @@
-import { ArrowRight, MapPin, Phone, Mail, Calendar, Instagram, Facebook } from "lucide-react";
+import { ArrowRight, MapPin, Mail, Calendar, Instagram, Facebook } from "lucide-react";
 import { Section } from "../ui/Section";
 import { TikTok } from "../ui/TikTok";
-import { CONTATO_INFO } from "../../data";
+import { CONTATO_INFO, SOCIAL_LINKS } from "../../data";
 
-const INFO_ICONS = [MapPin, Phone, Mail, Calendar];
+const INFO_ICONS = [MapPin, Mail, Instagram, Calendar];
 
 const inputStyle: React.CSSProperties = {
   width: "100%", padding: "1rem 1.25rem",
@@ -18,7 +18,7 @@ const inputStyle: React.CSSProperties = {
 export function Contato() {
   return (
     <Section id="contato" kicker="Fale com o gabinete"
-      title={<>O gabinete é seu. <em style={{ fontStyle: "italic" }}>Escreva</em>, ligue, apareça.</>}
+      title={<>O gabinete é do povo. <em style={{ fontStyle: "italic" }}>Escreva</em> ou mande sua mensagem.</>}
       background="var(--secondary-bg)">
       <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
         {/* Formulário */}
@@ -33,10 +33,10 @@ export function Contato() {
               onFocus={e => (e.currentTarget.style.borderColor = "var(--teal)")}
               onBlur={e => (e.currentTarget.style.borderColor = "var(--border)")} />
           </div>
-          <input placeholder="Bairro / Cidade" style={inputStyle}
+          <input placeholder="Bairro / Comunidade em Martinópole" style={inputStyle}
             onFocus={e => (e.currentTarget.style.borderColor = "var(--teal)")}
             onBlur={e => (e.currentTarget.style.borderColor = "var(--border)")} />
-          <textarea required rows={5} placeholder="Sua demanda, denúncia ou sugestão..."
+          <textarea required rows={5} placeholder="Sua mensagem, sugestão ou demanda para o gabinete..."
             style={{ ...inputStyle, resize: "none" }}
             onFocus={e => (e.currentTarget.style.borderColor = "var(--teal)")}
             onBlur={e => (e.currentTarget.style.borderColor = "var(--border)")} />
@@ -56,7 +56,7 @@ export function Contato() {
         {/* Info */}
         <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: "1rem" }}>
           {CONTATO_INFO.map((c, i) => {
-            const Icon = INFO_ICONS[i];
+            const Icon = INFO_ICONS[i] || MapPin;
             return (
               <div key={c.t} style={{
                 display: "flex", alignItems: "flex-start", gap: "1rem",
@@ -80,9 +80,9 @@ export function Contato() {
 
           <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.5rem" }}>
             {[
-              { icon: Instagram, href: "https://instagram.com", l: "Instagram" },
-              { icon: Facebook, href: "https://facebook.com", l: "Facebook" },
-              { icon: TikTok, href: "https://tiktok.com", l: "TikTok" },
+              { icon: Instagram, href: SOCIAL_LINKS.instagram, l: "Instagram" },
+              { icon: Facebook, href: SOCIAL_LINKS.facebook, l: "Facebook" },
+              { icon: TikTok, href: SOCIAL_LINKS.tiktok, l: "TikTok" },
             ].map((s) => (
               <a key={s.l} href={s.href} target="_blank" rel="noreferrer" aria-label={s.l}
                 className="social-btn"
@@ -104,3 +104,4 @@ export function Contato() {
     </Section>
   );
 }
+
