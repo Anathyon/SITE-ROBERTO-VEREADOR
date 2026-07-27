@@ -62,12 +62,42 @@ export const MELHORES_FEITOS = [
 ];
 
 export const FEED_POSTS = [
-  { t: "Sessão Ordinária conduzida com aprovação de pautas cruciais para Martinópole.", tag: "Presidência" },
-  { t: "Visita e diálogo constante com moradores das áreas urbanas e rurais.", tag: "Comunidade" },
-  { t: "Fortalecimento dos canais de transparência pública e e-SIC na Câmara.", tag: "Transparência" },
-  { t: "Discurso e mediação de debates prioritários para a educação e saúde local.", tag: "Plenário" },
-  { t: "Iniciativas de integração da juventude com as atividades do Poder Legislativo.", tag: "Cidadania" },
-  { t: "Fiscalização dos recursos públicos e prestação de contas continuada.", tag: "Fiscalização" },
+  {
+    t: "Sessão Ordinária conduzida com aprovação de pautas cruciais para Martinópole.",
+    tag: "Presidência",
+    img: "/Instagram/Captura de tela de 2026-07-22 15-44-34.png",
+    url: "https://www.instagram.com/p/DaDcKqFn7tr/",
+  },
+  {
+    t: "Visita e diálogo constante com moradores das áreas urbanas e rurais.",
+    tag: "Comunidade",
+    img: "/Instagram/Captura de tela de 2026-07-22 15-46-09.png",
+    url: "https://www.instagram.com/p/DY4dORmRDld/",
+  },
+  {
+    t: "Fortalecimento dos canais de transparência pública e e-SIC na Câmara.",
+    tag: "Transparência",
+    img: "/Instagram/Captura de tela de 2026-07-22 15-46-50.png",
+    url: "https://www.instagram.com/p/DYVCj0bJxDb/",
+  },
+  {
+    t: "Discurso e mediação de debates prioritários para a educação e saúde local.",
+    tag: "Plenário",
+    img: "/Instagram/Captura de tela de 2026-07-22 15-47-15.png",
+    url: "https://www.instagram.com/p/DXwf9UrHI9K/?img_index=1",
+  },
+  {
+    t: "Iniciativas de integração da juventude com as atividades do Poder Legislativo.",
+    tag: "Cidadania",
+    img: "/Instagram/Captura de tela de 2026-07-22 15-48-01.png",
+    url: "https://www.instagram.com/p/DJHJriKRgCo/",
+  },
+  {
+    t: "Fiscalização dos recursos públicos e prestação de contas continuada.",
+    tag: "Fiscalização",
+    img: "/Instagram/Captura de tela de 2026-07-22 15-48-29.png",
+    url: "https://www.instagram.com/p/DIlu44LxHJ_/?img_index=1",
+  },
 ];
 
 export const TRANSPARENCIA_CARDS = [

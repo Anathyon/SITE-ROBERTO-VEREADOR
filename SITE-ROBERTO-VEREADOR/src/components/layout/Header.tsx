@@ -5,25 +5,39 @@ import { NAV } from "../../data";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <header style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
-        backdropFilter: "blur(12px)",
-        background: "rgba(0,40,50,0.88)",
-        borderBottom: "1px solid rgba(255,255,255,0.1)",
-      }}>
-        <div style={{
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          width: "100%", maxWidth: 1280, margin: "0 auto",
-          padding: "0 2rem", height: 64,
-        }}>
+      <header
+        className={scrolled ? "scrolled" : ""}
+        style={{
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+          backdropFilter: "blur(12px)",
+          background: scrolled ? "rgba(0,40,50,0.95)" : "rgba(0,40,50,0.8)",
+          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(255,255,255,0.05)",
+          transition: "background 0.3s ease, border-bottom 0.3s ease",
+        }}
+      >
+        <div className="hdr-container">
           <Logo />
 
           <nav style={{ display: "flex", alignItems: "center", gap: "2rem" }} className="hdr-desktop">
@@ -107,6 +121,31 @@ export function Header() {
       </AnimatePresence>
 
       <style>{`
+        .hdr-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 2rem;
+          height: 96px;
+          transition: height 0.3s ease, padding 0.3s ease;
+        }
+        .scrolled .hdr-container {
+          height: 64px;
+        }
+        .logo-img {
+          height: 72px;
+          width: auto;
+          display: block;
+          object-fit: contain;
+          filter: brightness(0) invert(1);
+          transition: height 0.3s ease;
+        }
+        .scrolled .logo-img {
+          height: 44px;
+        }
         .hdr-desktop { display: flex !important; }
         .hdr-mobile { display: none !important; }
         .hdr-link { transition: color 0.2s; }
@@ -114,6 +153,19 @@ export function Header() {
         .hdr-cta { transition: opacity 0.2s; }
         .hdr-cta:hover { opacity: 0.85; }
         @media (max-width: 768px) {
+          .hdr-container {
+            height: 72px;
+            padding: 0 1.5rem;
+          }
+          .scrolled .hdr-container {
+            height: 56px;
+          }
+          .logo-img {
+            height: 50px;
+          }
+          .scrolled .logo-img {
+            height: 38px;
+          }
           .hdr-desktop { display: none !important; }
           .hdr-mobile { display: flex !important; }
         }
@@ -127,8 +179,8 @@ function Logo() {
     <a href="#top" style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}>
       <img
         src="/logo.png"
+        className="logo-img"
         alt="Vereador Roberto"
-        style={{ height: 44, width: "auto", display: "block", objectFit: "contain", filter: "brightness(0) invert(1)" }}
       />
     </a>
   );
