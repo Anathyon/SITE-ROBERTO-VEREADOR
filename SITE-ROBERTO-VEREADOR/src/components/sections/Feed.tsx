@@ -9,7 +9,7 @@ export function Feed() {
       title={<>Do plenário direto pro seu <em style={{ fontStyle: "italic" }}>feed</em>.</>}
       background="var(--teal-deep)" color="white">
       
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
+      <div className="feed-grid" style={{ display: "grid", gap: "1.5rem" }}>
         {FEED_POSTS.map((p, i) => (
           <motion.a
             key={i}
@@ -119,6 +119,19 @@ export function Feed() {
       </div>
 
       <style>{`
+        .feed-grid {
+          grid-template-columns: 1fr;
+        }
+        @media (min-width: 640px) {
+          .feed-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+        @media (min-width: 1024px) {
+          .feed-grid {
+            grid-template-columns: repeat(3, 1fr);
+          }
+        }
         .feed-card:hover {
           transform: translateY(-4px);
           border-color: var(--coral) !important;
