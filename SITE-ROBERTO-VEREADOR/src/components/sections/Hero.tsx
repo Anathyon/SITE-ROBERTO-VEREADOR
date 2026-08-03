@@ -35,8 +35,8 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
               style={{
                 display: "inline-flex", alignItems: "center", gap: "0.5rem",
-                borderRadius: 9999, border: "1px solid rgba(240,165,150,0.4)",
-                background: "rgba(240,165,150,0.1)",
+                borderRadius: 9999, border: "1px solid rgba(229,193,88,0.4)",
+                background: "rgba(229,193,88,0.1)",
                 padding: "0.35rem 1rem",
                 fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.25em", color: "var(--coral)",
               }}>
@@ -116,11 +116,11 @@ export function Hero() {
               }} />
               <div style={{
                 position: "relative", borderRadius: 32, overflow: "hidden",
-                border: "1px solid rgba(240,165,150,0.3)",
+                border: "1px solid rgba(229,193,88,0.3)",
                 boxShadow: "var(--shadow-glow)",
               }}>
                 <img src="/FOTO RO BERTINHO.png" alt="Vereador Robertinho Moreira" style={{ width: "100%", height: "auto", display: "block" }} />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,30,40,0.65), transparent)" }} />
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(7,33,18,0.65), transparent)" }} />
                 <div style={{
                   position: "absolute", bottom: 24, left: 24, right: 24,
                   display: "flex", alignItems: "center", justifyContent: "space-between",

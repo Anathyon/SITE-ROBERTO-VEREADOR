@@ -31,31 +31,31 @@ body {
 }
 
 :root {
-  /* Paleta extraída do icon.png */
-  --teal-deep:  #004d5c;          /* primária escura  */
-  --teal:       #006878;          /* primária         */
-  --teal-mid:   #1e7878;          /* variação média   */
-  --coral:      #f0a596;          /* destaque/acento  */
-  --coral-dark: #d4806e;          /* destaque escuro  */
-  --wine:       #781e5a;          /* acento secundário*/
-  --dark:       #1e2a2d;          /* texto principal  */
-  --muted-fg:   #5a7278;          /* texto secundário */
+  /* Paleta adaptada com verde esmeralda #27ae60 */
+  --teal-deep:  #0d3a20;          /* primária escura  */
+  --teal:       #27ae60;          /* primária         */
+  --teal-mid:   #1e824c;          /* variação média   */
+  --coral:      #e5c158;          /* destaque/acento  */
+  --coral-dark: #cba332;          /* destaque escuro  */
+  --wine:       #9a7d0a;          /* acento secundário*/
+  --dark:       #0f1a14;          /* texto principal  */
+  --muted-fg:   #4d6056;          /* texto secundário */
 
   /* Superfícies */
-  --background:   #f2f4f4;        /* cinza bem claro  */
+  --background:   #f2f5f3;        /* cinza bem claro esverdeado */
   --foreground:   var(--dark);
   --card:         #ffffff;
-  --border:       #dde4e6;
-  --secondary-bg: #e8eef0;
+  --border:       #dce3e0;
+  --secondary-bg: #e6ece8;
 
   /* Gradientes */
-  --gradient-hero:   radial-gradient(ellipse at 20% 30%, #006878 0%, #004050 55%, #001e28 100%);
-  --gradient-accent: linear-gradient(135deg, #f0a596, #d4806e);
-  --gradient-teal:   linear-gradient(135deg, #1e7878, #004d5c);
+  --gradient-hero:   radial-gradient(ellipse at 20% 30%, #27ae60 0%, #14532d 55%, #062312 100%);
+  --gradient-accent: linear-gradient(135deg, #e5c158, #cba332);
+  --gradient-teal:   linear-gradient(135deg, #1e824c, #0d3a20);
 
   /* Sombras */
-  --shadow-glow: 0 30px 80px -20px rgba(0, 104, 120, 0.4);
-  --shadow-card: 0 20px 40px -20px rgba(0, 40, 50, 0.15);
+  --shadow-glow: 0 30px 80px -20px rgba(39, 174, 96, 0.4);
+  --shadow-card: 0 20px 40px -20px rgba(13, 58, 32, 0.15);
 
   /* Aliases para compatibilidade com componentes existentes */
   --navy-deep:      var(--teal-deep);

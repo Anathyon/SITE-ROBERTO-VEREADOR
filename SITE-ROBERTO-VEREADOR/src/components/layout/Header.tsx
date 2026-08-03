@@ -32,7 +32,7 @@ export function Header() {
         style={{
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
           backdropFilter: "blur(12px)",
-          background: scrolled ? "rgba(0,40,50,0.95)" : "rgba(0,40,50,0.8)",
+          background: scrolled ? "rgba(13,58,32,0.95)" : "rgba(13,58,32,0.8)",
           borderBottom: scrolled ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(255,255,255,0.05)",
           transition: "background 0.3s ease, border-bottom 0.3s ease",
         }}

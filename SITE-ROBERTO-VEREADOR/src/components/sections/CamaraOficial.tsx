@@ -16,7 +16,7 @@ export function CamaraOficial() {
           <div style={{
             display: "inline-flex", alignItems: "center", gap: "0.5rem",
             padding: "0.4rem 0.85rem", borderRadius: 9999,
-            background: "rgba(0,104,120,0.1)", color: "var(--teal)",
+            background: "rgba(39,174,96,0.1)", color: "var(--teal)",
             fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em",
             alignSelf: "flex-start",
           }}>
@@ -49,16 +49,16 @@ export function CamaraOficial() {
                 background: "var(--gradient-accent)", color: "var(--teal-deep)",
                 fontWeight: 700, padding: "0.95rem 2rem", borderRadius: 9999,
                 textDecoration: "none", fontSize: "1rem",
-                boxShadow: "0 8px 25px -6px rgba(0,104,120,0.3)",
+                boxShadow: "0 8px 25px -6px rgba(39,174,96,0.3)",
                 transition: "transform 0.2s, box-shadow 0.2s",
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.transform = "scale(1.04)";
-                e.currentTarget.style.boxShadow = "0 12px 30px -6px rgba(0,104,120,0.4)";
+                e.currentTarget.style.boxShadow = "0 12px 30px -6px rgba(39,174,96,0.4)";
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.boxShadow = "0 8px 25px -6px rgba(0,104,120,0.3)";
+                e.currentTarget.style.boxShadow = "0 8px 25px -6px rgba(39,174,96,0.3)";
               }}>
               Acessar Perfil Oficial na Câmara <ExternalLink size={18} />
             </a>
@@ -78,7 +78,7 @@ export function CamaraOficial() {
             }}>
             <div style={{
               width: 46, height: 46, borderRadius: 14,
-              background: "rgba(0,104,120,0.1)", color: "var(--teal)",
+              background: "rgba(39,174,96,0.1)", color: "var(--teal)",
               display: "flex", alignItems: "center", justifyContent: "center",
               marginBottom: "1rem",
             }}>
@@ -105,7 +105,7 @@ export function CamaraOficial() {
             }}>
             <div style={{
               width: 46, height: 46, borderRadius: 14,
-              background: "rgba(0,104,120,0.1)", color: "var(--teal)",
+              background: "rgba(39,174,96,0.1)", color: "var(--teal)",
               display: "flex", alignItems: "center", justifyContent: "center",
               marginBottom: "1rem",
             }}>

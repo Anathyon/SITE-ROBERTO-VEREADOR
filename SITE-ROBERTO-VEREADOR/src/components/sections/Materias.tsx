@@ -30,7 +30,7 @@ export function Materias() {
               <span style={{
                 display: "inline-block", fontSize: "0.65rem", textTransform: "uppercase",
                 letterSpacing: "0.15em", color: "var(--teal)",
-                background: "rgba(0,104,120,0.1)",
+                background: "rgba(39,174,96,0.1)",
                 padding: "0.2rem 0.65rem", borderRadius: 9999,
               }}>{it.tag}</span>
               <h3 style={{
@@ -52,7 +52,7 @@ export function Materias() {
         ))}
       </div>
       <style>{`
-        .materia-card:hover { border-color: var(--teal) !important; box-shadow: 0 8px 30px -10px rgba(0,77,92,0.12); }
+        .materia-card:hover { border-color: var(--teal) !important; box-shadow: 0 8px 30px -10px rgba(13,58,32,0.12); }
       `}</style>
     </Section>
   );

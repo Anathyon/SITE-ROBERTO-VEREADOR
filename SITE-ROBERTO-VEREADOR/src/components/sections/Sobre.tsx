@@ -47,7 +47,7 @@ export function Sobre() {
           }}>
           <img src={plenarioImg} alt="Plenário da Câmara Municipal" loading="lazy"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", flex: 1 }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, var(--teal-deep), rgba(0,77,92,0.2), transparent)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, var(--teal-deep), rgba(13,58,32,0.2), transparent)" }} />
           <div style={{ position: "absolute", bottom: 24, left: 24, right: 24, color: "white" }}>
             <div style={{ fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--coral)", marginBottom: "0.35rem" }}>Plenário</div>
             <div style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", lineHeight: 1.25 }}>"Governar é escutar antes de decidir."</div>

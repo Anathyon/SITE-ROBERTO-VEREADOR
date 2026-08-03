@@ -30,7 +30,7 @@ export function MelhoresFeitos() {
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
                 <span style={{
                   fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em",
-                  color: "var(--teal)", background: "rgba(0,104,120,0.08)",
+                  color: "var(--teal)", background: "rgba(39,174,96,0.08)",
                   padding: "0.35rem 0.8rem", borderRadius: 9999,
                 }}>
                   {f.category}
@@ -75,7 +75,7 @@ export function MelhoresFeitos() {
         .feito-card:hover {
           transform: translateY(-4px);
           border-color: var(--teal) !important;
-          box-shadow: 0 16px 35px -10px rgba(0,104,120,0.15);
+          box-shadow: 0 16px 35px -10px rgba(39,174,96,0.15);
         }
       `}</style>
 

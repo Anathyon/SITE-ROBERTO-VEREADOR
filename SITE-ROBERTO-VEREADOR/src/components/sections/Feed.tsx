@@ -51,7 +51,7 @@ export function Feed() {
             {/* Gradient Overlay */}
             <div style={{
               position: "absolute", inset: 0,
-              background: "linear-gradient(to top, rgba(0,25,35,0.95) 0%, rgba(0,25,35,0.5) 55%, rgba(0,25,35,0.25) 100%)",
+              background: "linear-gradient(to top, rgba(7,33,18,0.95) 0%, rgba(7,33,18,0.5) 55%, rgba(7,33,18,0.25) 100%)",
               zIndex: 1,
             }} />
 
@@ -66,8 +66,8 @@ export function Feed() {
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                 <span style={{
                   fontSize: "0.65rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700,
-                  color: "var(--coral)", background: "rgba(0,25,35,0.6)",
-                  border: "1px solid rgba(240,165,150,0.4)",
+                  color: "var(--coral)", background: "rgba(7,33,18,0.6)",
+                  border: "1px solid rgba(229,193,88,0.4)",
                   padding: "0.25rem 0.75rem", borderRadius: 9999,
                   backdropFilter: "blur(4px)",
                 }}>{p.tag}</span>
