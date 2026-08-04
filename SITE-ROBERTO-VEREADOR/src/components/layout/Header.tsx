@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { NAV } from "../../data";
+import { useLocation, Link } from "@tanstack/react-router";
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -38,18 +41,21 @@ export function Header() {
         }}
       >
         <div className="hdr-container">
-          <Logo />
+          <Logo isHome={isHome} />
 
           <nav style={{ display: "flex", alignItems: "center", gap: "2rem" }} className="hdr-desktop">
-            {NAV.map((n) => (
-              <a key={n.href} href={n.href} className="hdr-link"
-                style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.8)", textDecoration: "none" }}>
-                {n.label}
-              </a>
-            ))}
+            {NAV.map((n) => {
+              const href = isHome ? n.href : `/${n.href}`;
+              return (
+                <a key={n.href} href={href} className="hdr-link"
+                  style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.8)", textDecoration: "none" }}>
+                  {n.label}
+                </a>
+              );
+            })}
           </nav>
 
-          <a href="#contato" className="hdr-desktop hdr-cta" style={{
+          <a href={isHome ? "#contato" : "/#contato"} className="hdr-desktop hdr-cta" style={{
             display: "flex", alignItems: "center", gap: "0.4rem",
             fontSize: "0.875rem", fontWeight: 600,
             background: "var(--gradient-accent)", color: "var(--teal-deep)",
@@ -97,17 +103,20 @@ export function Header() {
               </button>
             </div>
             <nav style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-              {NAV.map((n) => (
-                <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="hdr-link"
-                  style={{
-                    fontSize: "1.1rem", color: "rgba(255,255,255,0.85)",
-                    textDecoration: "none", fontFamily: "var(--font-display)", fontWeight: 600,
-                  }}>
-                  {n.label}
-                </a>
-              ))}
+              {NAV.map((n) => {
+                const href = isHome ? n.href : `/${n.href}`;
+                return (
+                  <a key={n.href} href={href} onClick={() => setOpen(false)} className="hdr-link"
+                    style={{
+                      fontSize: "1.1rem", color: "rgba(255,255,255,0.85)",
+                      textDecoration: "none", fontFamily: "var(--font-display)", fontWeight: 600,
+                    }}>
+                    {n.label}
+                  </a>
+                );
+              })}
             </nav>
-            <a href="#contato" onClick={() => setOpen(false)} style={{
+            <a href={isHome ? "#contato" : "/#contato"} onClick={() => setOpen(false)} style={{
               marginTop: "auto",
               display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
               background: "var(--gradient-accent)", color: "var(--teal-deep)",
@@ -174,14 +183,18 @@ export function Header() {
   );
 }
 
-function Logo() {
+function Logo({ isHome }: { isHome: boolean }) {
   return (
-    <a href="#top" style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}>
+    <Link 
+      to="/" 
+      hash={isHome ? "top" : undefined}
+      style={{ display: "flex", alignItems: "center", gap: "0.75rem", textDecoration: "none" }}
+    >
       <img
         src="/logo.png"
         className="logo-img"
         alt="Vereador Roberto"
       />
-    </a>
+    </Link>
   );
 }

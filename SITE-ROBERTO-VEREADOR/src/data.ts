@@ -28,10 +28,38 @@ export const SOBRE_BADGES = [
 ];
 
 export const MATERIAS = [
-  { n: "Ofício 16/2026", tag: "Aprovação", title: "Envio e acompanhamento de matérias aprovadas na Câmara", date: "11 jun 2026" },
-  { n: "Ofício 15/2026", tag: "Legislativo", title: "Modernização e normatização administrativa dos trabalhos", date: "10 jun 2026" },
-  { n: "Ofício 14/2026", tag: "Transparência", title: "Publicação e divulgação de relatórios de gestão pública", date: "28 mai 2026" },
-  { n: "Ofício 07/2026", tag: "Comunidade", title: "Indicações e requerimentos de melhorias para o município", date: "30 abr 2026" },
+  { 
+    n: "Ofício 16/2026", 
+    tag: "Aprovação", 
+    title: "Envio e acompanhamento de matérias aprovadas na Câmara", 
+    date: "11 jun 2026",
+    slug: "oficio-16-2026",
+    description: "Este ofício trata do envio sistemático e do acompanhamento rigoroso de todas as matérias que foram devidamente aprovadas pelo plenário da Câmara Municipal. O objetivo principal é garantir celeridade na execução das demandas do Legislativo junto ao Executivo municipal, fortalecendo as ações em prol dos cidadãos martinopolenses."
+  },
+  { 
+    n: "Ofício 15/2026", 
+    tag: "Legislativo", 
+    title: "Modernização e normatização administrativa dos trabalhos", 
+    date: "10 jun 2026",
+    slug: "oficio-15-2026",
+    description: "Propõe a modernização dos processos legislativos e a normatização administrativa dos trabalhos internos da Câmara. Visa a implementação de ferramentas digitais para redução de papel, otimização do tempo das sessões e organização arquivística dos documentos oficiais produzidos pelos parlamentares."
+  },
+  { 
+    n: "Ofício 14/2026", 
+    tag: "Transparência", 
+    title: "Publicação e divulgação de relatórios de gestão pública", 
+    date: "28 mai 2026",
+    slug: "oficio-14-2026",
+    description: "Solicita a publicação periódica e a ampla divulgação dos relatórios detalhados da gestão financeira e administrativa pública do município. O intuito é democratizar o acesso à informação, permitindo que a população acompanhe em tempo real a aplicação dos recursos públicos e a execução orçamentária."
+  },
+  { 
+    n: "Ofício 07/2026", 
+    tag: "Comunidade", 
+    title: "Indicações e requerimentos de melhorias para o município", 
+    date: "30 abr 2026",
+    slug: "oficio-07-2026",
+    description: "Reúne indicações e requerimentos essenciais para melhorias estruturais em bairros e distritos de Martinópole. Entre as principais solicitações estão a pavimentação de vias, expansão da iluminação pública nas zonas periféricas e manutenção preventiva dos postos de saúde da região."
+  },
 ];
 
 export const MELHORES_FEITOS = [
