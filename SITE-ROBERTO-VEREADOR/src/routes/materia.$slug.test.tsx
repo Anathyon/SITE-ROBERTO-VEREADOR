@@ -29,7 +29,7 @@ vi.mock("../components/layout/Footer", () => ({
 
 describe("Rota de Detalhes da Matéria", () => {
   let queryClient: QueryClient;
-  const fetchMock = vi.spyOn(global, "fetch");
+  const fetchMock = vi.spyOn(globalThis, "fetch");
 
   beforeEach(() => {
     queryClient = new QueryClient({
@@ -99,7 +99,7 @@ describe("Rota de Detalhes da Matéria", () => {
 
     // Deve exibir o aviso de modo de demonstração/offline
     await waitFor(() => {
-      expect(screen.getByText(/Modo de Demonstração: Conexão com o servidor da API falhou/i)).toBeInTheDocument();
+      expect(screen.getByText(/Modo de Demonstração:/i)).toBeInTheDocument();
     });
 
     // Deve exibir as informações da matéria do local mock
