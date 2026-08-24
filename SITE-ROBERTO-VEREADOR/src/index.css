@@ -96,3 +96,66 @@ body { font-family: var(--font-sans); background: var(--background); color: var(
 }
 .hero-bg { background: var(--gradient-hero); }
 .gold-gradient { background: var(--gradient-accent); }
+
+/* ── Formulário de Contato ── */
+.contato-input {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: none;
+}
+.contato-input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.12);
+}
+.contato-input::placeholder {
+  color: var(--muted-fg);
+  opacity: 0.7;
+}
+.contato-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  border-radius: 9999px;
+  background: var(--gradient-accent);
+  color: var(--teal-deep);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  align-self: flex-start;
+}
+.contato-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+.contato-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+@keyframes contato-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.contato-spin {
+  animation: contato-spin 1s linear infinite;
+}
+
+/* ── reCAPTCHA v3: esconde o badge flutuante padrão do Google.
+   Obrigatório exibir aviso textual em substituição (Google ToS).
+   Ref: https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed ── */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

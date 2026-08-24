@@ -1,16 +1,10 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, Play } from "lucide-react";
-import { STATS } from "../../data";
+import { STATS, SOCIAL_LINKS } from "../../data";
 
 export function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
-    <section id="top" ref={ref} style={{
+    <section id="top" style={{
       position: "relative", minHeight: "100vh",
       background: "var(--gradient-hero)",
       display: "flex", alignItems: "center", justifyContent: "center",
@@ -24,7 +18,7 @@ export function Hero() {
         pointerEvents: "none",
       }} />
 
-      <motion.div style={{ y, opacity, width: "100%", maxWidth: 1280, position: "relative" }}>
+      <motion.div style={{ width: "100%", maxWidth: 1280, position: "relative" }}>
         <div style={{
           display: "flex", flexWrap: "wrap", alignItems: "center",
           gap: "3rem", justifyContent: "center",
@@ -65,7 +59,7 @@ export function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6, duration: 0.6 }}
               style={{ marginTop: "2.5rem", display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <a href="#camara-oficial" style={{
+              <a href={SOCIAL_LINKS.camara} target="_blank" rel="noreferrer noopener" style={{
                 display: "inline-flex", alignItems: "center", gap: "0.5rem",
                 background: "var(--gradient-accent)", color: "var(--teal-deep)",
                 fontWeight: 600, padding: "0.85rem 1.75rem", borderRadius: 9999,

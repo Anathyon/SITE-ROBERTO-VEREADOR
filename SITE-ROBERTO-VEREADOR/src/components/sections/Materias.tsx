@@ -7,7 +7,7 @@ import {
 import { Section } from "../ui/Section";
 import { MATERIAS } from "../../data";
 import { useQuery } from "@tanstack/react-query";
-import { API_BASE_URL } from "../../config";
+import { API_BASE_URL, SHOULD_FETCH_API } from "../../config";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
@@ -75,11 +75,31 @@ function MateriaModal({
   slug: string;
   onClose: () => void;
 }) {
-  const { data, isLoading, error } = useQuery({
+  const localItem = MATERIAS.find((m) => m.slug === slug);
+  const fallbackDetail: ApiMateria | undefined = localItem
+    ? {
+        id: 0,
+        slug: localItem.slug,
+        tipo: { nome: localItem.tag, slug: localItem.tag.toLowerCase() },
+        numero: 0,
+        numeracao: localItem.n,
+        ano: 2026,
+        data: localItem.date,
+        titulo: localItem.title,
+        ementa: localItem.description ?? "",
+        autores: ["Vereador Roberto Moreira"],
+        documento: null,
+      }
+    : undefined;
+
+  const { data: apiData, isLoading, error } = useQuery({
     queryKey: ["materia-detail", slug],
     queryFn: () => fetchMateriaDetail(slug),
     staleTime: 5 * 60 * 1000,
+    enabled: SHOULD_FETCH_API,
   });
+
+  const data = apiData ?? fallbackDetail;
 
   // Fechar com ESC
   useEffect(() => {
@@ -303,12 +323,13 @@ export function Materias() {
     queryFn: () => fetchMaterias(page),
     staleTime: 2 * 60 * 1000,
     placeholderData: (prev) => prev,
+    enabled: SHOULD_FETCH_API,
   });
 
   const handleOpen = useCallback((slug: string) => setSelectedSlug(slug), []);
   const handleClose = useCallback(() => setSelectedSlug(null), []);
 
-  // Fallback estático quando API offline
+  // Fallback estático quando API offline ou desativada
   const isOffline = !!error && !isLoading;
   const apiItems = data?.data ?? null;
   const meta = data?.meta;
@@ -327,7 +348,7 @@ export function Materias() {
     documento: null,
   } as ApiMateria));
 
-  const items: ApiMateria[] = apiItems ?? (isOffline ? fallbackItems : []);
+  const items: ApiMateria[] = apiItems ?? fallbackItems;
 
   return (
     <Section
@@ -365,8 +386,7 @@ export function Materias() {
             key={it.slug}
             onClick={() => handleOpen(it.slug)}
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.06, duration: 0.45 }}
             className="materia-card"
             style={{

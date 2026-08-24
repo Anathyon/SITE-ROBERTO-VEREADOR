@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { ArrowLeft, Calendar, FileText, Tag, ShieldCheck, AlertCircle } from "lucide-react";
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL, SHOULD_FETCH_API } from "../config";
 import { MATERIAS } from "../data";
 import { motion } from "framer-motion";
 
@@ -51,11 +51,12 @@ export function MateriaDetails() {
   const { data, error, isLoading } = useQuery({
     queryKey: ["materia", slug],
     queryFn: () => fetchMateriaDetail(slug),
+    enabled: SHOULD_FETCH_API,
   });
 
   const localMateria = MATERIAS.find((m) => m.slug === slug);
   const fallbackData = localMateria ? normalizeMateria(localMateria) : null;
-  const materia = data ? normalizeMateria(data) : (error ? fallbackData : null);
+  const materia = data ? normalizeMateria(data) : fallbackData;
 
   return (
     <div style={{ width: "100%", minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--background)" }}>

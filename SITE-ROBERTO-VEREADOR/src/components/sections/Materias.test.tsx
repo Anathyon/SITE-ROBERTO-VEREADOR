@@ -3,6 +3,12 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { Materias } from "./Materias";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+// Força a API habilitada nos testes independente do .env
+vi.mock("../../config", () => ({
+  API_BASE_URL: "http://test-api/api/v1",
+  SHOULD_FETCH_API: true,
+}));
+
 // Mock the router components/hooks
 vi.mock("@tanstack/react-router", async () => {
   const actual = await vi.importActual<any>("@tanstack/react-router");
