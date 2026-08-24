@@ -139,8 +139,8 @@
     # HSTS — força HTTPS
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-    # Content Security Policy (CSP) ajustado para produção
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' http://127.0.0.1:8000 https://robertinhoce.com.br https://d.storage.plugwin.net; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self' https://robertinhoce.com.br;"
+    # Content Security Policy (CSP) ajustado para produção e integrações (reCAPTCHA, Painel API, Formspark, YouTube)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' http://127.0.0.1:8000 https://robertinhoce.com.br https://painel.robertinhoce.com.br https://api.formspark.io https://www.google.com https://d.storage.plugwin.net; frame-src 'self' https://www.google.com https://recaptcha.google.com https://www.youtube.com https://player.vimeo.com; object-src 'none'; base-uri 'self'; form-action 'self' https://robertinhoce.com.br https://api.formspark.io;"
 
     # Ocultar assinaturas de servidor
     Header always unset X-Powered-By
