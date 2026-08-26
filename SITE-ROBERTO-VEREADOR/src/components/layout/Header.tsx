@@ -55,7 +55,7 @@ export function Header() {
             })}
           </nav>
 
-          <a href={isHome ? "#contato" : "/#contato"} className="hdr-desktop hdr-cta" style={{
+          <a href="mailto:contato@robertinhoce.com.br" className="hdr-desktop hdr-cta" style={{
             display: "flex", alignItems: "center", gap: "0.4rem",
             fontSize: "0.875rem", fontWeight: 600,
             background: "var(--gradient-accent)", color: "var(--teal-deep)",
@@ -116,7 +116,7 @@ export function Header() {
                 );
               })}
             </nav>
-            <a href={isHome ? "#contato" : "/#contato"} onClick={() => setOpen(false)} style={{
+            <a href="mailto:contato@robertinhoce.com.br" onClick={() => setOpen(false)} style={{
               marginTop: "auto",
               display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
               background: "var(--gradient-accent)", color: "var(--teal-deep)",

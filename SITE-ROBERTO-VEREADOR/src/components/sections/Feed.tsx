@@ -14,8 +14,35 @@ import { FEED_POSTS, SOCIAL_LINKS } from "../../data";
 import { useQuery } from "@tanstack/react-query";
 import { API_BASE_URL, SHOULD_FETCH_API } from "../../config";
 
-// ─── Tipos ────────────────────────────────────────────────────────────────────
+// Domínio de produção — usado para resolver imagens relativas da API
+const API_ORIGIN = "https://painel.robertinhoce.com.br";
 
+// ─── Tipos (estrutura real da API) ───────────────────────────────────────────
+
+/** Formato que a API realmente devolve */
+interface ApiPostRaw {
+  id: number;
+  slug: string;
+  legenda: string | null;
+  resumo: string | null;
+  tags: string[];
+  hashtags: string[];
+  data: string;
+  imagem: { url: string; alt: string } | string | null;
+  url: string | null;          // link do Instagram
+}
+
+interface ApiListResponseRaw {
+  data: ApiPostRaw[];
+  meta: {
+    current_page: number;
+    last_page: number;
+    total: number;
+    per_page: number;
+  };
+}
+
+/** Formato normalizado usado internamente pelo componente */
 interface ApiPost {
   id: number;
   slug: string;
@@ -23,18 +50,31 @@ interface ApiPost {
   legenda: string | null;
   categoria: string;
   imagem: string | null;
-  video: string | null;       // URL de vídeo (mp4 / embed) — pode ser nulo
+  video: string | null;
   url_instagram: string | null;
   created_at: string;
 }
 
-interface ApiListResponse {
-  data: ApiPost[];
-  meta: {
-    current_page: number;
-    last_page: number;
-    total: number;
-    per_page: number;
+/** Normaliza um post cru da API para o formato interno */
+function normalizePost(raw: ApiPostRaw): ApiPost {
+  // imagem pode ser objeto {url,alt} ou string direta
+  let imgUrl: string | null = null;
+  if (raw.imagem && typeof raw.imagem === "object" && "url" in raw.imagem) {
+    imgUrl = (raw.imagem as { url: string; alt: string }).url ?? null;
+  } else if (typeof raw.imagem === "string") {
+    imgUrl = raw.imagem;
+  }
+
+  return {
+    id: raw.id,
+    slug: raw.slug,
+    titulo: raw.legenda ?? raw.resumo ?? `Post ${raw.id}`,
+    legenda: raw.resumo ?? raw.legenda ?? null,
+    categoria: raw.tags?.[0] ?? "Instagram",
+    imagem: imgUrl,
+    video: null,
+    url_instagram: raw.url ?? null,
+    created_at: raw.data ?? "",
   };
 }
 
@@ -54,13 +94,35 @@ const FALLBACK_POSTS: ApiPost[] = FEED_POSTS.map((p, i) => ({
 
 // ─── Fetch ────────────────────────────────────────────────────────────────────
 
+/** Tipo normalizado retornado pelo fetch (após mapear os posts) */
+interface ApiListResponse {
+  data: ApiPost[];
+  meta: ApiListResponseRaw["meta"];
+}
+
 async function fetchInstagram(page: number): Promise<ApiListResponse> {
   const res = await fetch(`${API_BASE_URL}/instagram?pagina=${page}`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json() as Promise<ApiListResponse>;
+  const raw = await res.json() as ApiListResponseRaw;
+  return {
+    data: raw.data.map(normalizePost),
+    meta: raw.meta,
+  };
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/**
+ * Resolve a URL de uma imagem vinda da API.
+ * - Se já for uma URL absoluta (começa com http/https), retorna como está.
+ * - Se for um caminho relativo (ex: /storage/...), prefixamos com o domínio da API.
+ */
+function resolveImgUrl(url: string | null | unknown): string | null {
+  if (!url || typeof url !== "string") return null;
+  if (url.startsWith("http://") || url.startsWith("https://")) return url;
+  // Remove proxy prefix se presente, e prefixamos com o domínio real
+  return `${API_ORIGIN}${url.startsWith("/") ? url : `/${url}`}`;
+}
 
 /** Detecta se a URL é um embed do YouTube/Vimeo ou um arquivo de vídeo direto */
 function isEmbedUrl(url: string) {
@@ -90,9 +152,11 @@ function PostModal({ post, onClose }: { post: ApiPost; onClose: () => void }) {
     };
   }, [onClose]);
 
-  const hasVideo = Boolean(post.video);
-  const hasImage = Boolean(post.imagem);
-  const isEmbed  = hasVideo && isEmbedUrl(post.video!);
+  const resolvedImg = resolveImgUrl(post.imagem);
+  const resolvedVideo = resolveImgUrl(post.video);
+  const hasVideo = Boolean(resolvedVideo);
+  const hasImage = Boolean(resolvedImg);
+  const isEmbed  = hasVideo && isEmbedUrl(resolvedVideo!);
 
   return (
     /* ── Backdrop ── */
@@ -151,7 +215,7 @@ function PostModal({ post, onClose }: { post: ApiPost; onClose: () => void }) {
           <div style={{ position: "relative", width: "100%", aspectRatio: "16/9", background: "#000" }}>
             {isEmbed ? (
               <iframe
-                src={toEmbedUrl(post.video!)}
+                src={toEmbedUrl(resolvedVideo!)}
                 title={post.titulo}
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
@@ -159,7 +223,7 @@ function PostModal({ post, onClose }: { post: ApiPost; onClose: () => void }) {
               />
             ) : (
               <video
-                src={post.video!}
+                src={resolvedVideo!}
                 controls
                 autoPlay
                 playsInline
@@ -168,17 +232,21 @@ function PostModal({ post, onClose }: { post: ApiPost; onClose: () => void }) {
             )}
           </div>
         ) : hasImage ? (
-          <div style={{ position: "relative", width: "100%", aspectRatio: "1/1", overflow: "hidden", maxHeight: 480 }}>
+          <div style={{
+            position: "relative", width: "100%",
+            background: "#111",
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
             <img
-              src={post.imagem!}
+              src={resolvedImg!}
               alt={post.titulo}
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              style={{
+                width: "100%",
+                maxHeight: "70vh",
+                objectFit: "contain",
+                display: "block",
+              }}
             />
-            {/* Gradiente inferior */}
-            <div style={{
-              position: "absolute", bottom: 0, left: 0, right: 0, height: "50%",
-              background: "linear-gradient(to top, rgba(5,20,11,0.72) 0%, transparent 100%)",
-            }} />
             {/* Badge categoria sobre a imagem */}
             <span style={{
               position: "absolute", top: "1.1rem", left: "1.1rem",
@@ -309,6 +377,7 @@ function PostModal({ post, onClose }: { post: ApiPost; onClose: () => void }) {
 // ─── Card do feed ─────────────────────────────────────────────────────────────
 
 function FeedCard({ post, onOpen }: { post: ApiPost; onOpen: (p: ApiPost) => void }) {
+  const resolvedImg = resolveImgUrl(post.imagem);
   const hasVideo = Boolean(post.video);
 
   return (
@@ -330,21 +399,29 @@ function FeedCard({ post, onOpen }: { post: ApiPost; onOpen: (p: ApiPost) => voi
         textAlign: "left",
       }}
     >
-      {/* Imagem/vídeo de fundo */}
-      {post.imagem && (
-        <img
-          src={post.imagem}
-          alt=""
-          loading="lazy"
-          aria-hidden="true"
-          className="feed-bg-img"
+      {/* Imagem de fundo — cover para preencher o card sem barras */}
+      {resolvedImg && (
+        <div
           style={{
             position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "cover", display: "block",
-            transition: "transform 0.5s ease",
+            background: "#111",
           }}
-        />
+        >
+          <img
+            src={resolvedImg}
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+            className="feed-bg-img"
+            style={{
+              width: "100%", height: "100%",
+              objectFit: "cover",
+              objectPosition: "center",
+              display: "block",
+              transition: "transform 0.5s ease",
+            }}
+          />
+        </div>
       )}
 
       {/* Gradiente */}

@@ -136,7 +136,7 @@ export const TRANSPARENCIA_CARDS = [
 ];
 
 export const CONTATO_INFO = [
-  { t: "Câmara Municipal de Martinópole", d: "Praça Principal, s/nº — Centro, Martinópole - CE" },
+  { t: "Câmara Municipal de Martinópole", d: "Avenida Francisco Ferro, Nº 42 — Centro (Gabinete da Presidência)" },
   { t: "E-mail Institucional", d: "contato@robertinhoce.com.br" },
   { t: "Redes Sociais Oficiais", d: "@robertinhoce (Instagram, Facebook e TikTok)" },
   { t: "Atendimento ao Cidadão", d: "Segunda a sexta-feira, durante o expediente da Câmara" },
