@@ -116,11 +116,16 @@ async function fetchInstagram(page: number): Promise<ApiListResponse> {
  * Resolve a URL de uma imagem vinda da API.
  * - Se já for uma URL absoluta (começa com http/https), retorna como está.
  * - Se for um caminho relativo (ex: /storage/...), prefixamos com o domínio da API.
+ * - Se receber objeto { url, alt }, extrai a string antes de processar.
  */
-function resolveImgUrl(url: string | null | unknown): string | null {
-  if (!url || typeof url !== "string") return null;
+function resolveImgUrl(url: unknown): string | null {
+  // Extrai string de objeto { url: string } se necessário
+  if (url && typeof url === "object" && "url" in (url as object)) {
+    url = (url as { url: unknown }).url;
+  }
+  if (!url || typeof url !== "string" || url.trim() === "") return null;
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
-  // Remove proxy prefix se presente, e prefixamos com o domínio real
+  // Caminho relativo: prefixamos com o domínio real
   return `${API_ORIGIN}${url.startsWith("/") ? url : `/${url}`}`;
 }
 
