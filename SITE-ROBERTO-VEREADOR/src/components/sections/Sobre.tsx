@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Users, Landmark, Scale } from "lucide-react";
 import { Section } from "../ui/Section";
 import { SOBRE_BADGES } from "../../data";
-import plenarioImg from "../../assets/plenario.jpg";
+const plenarioImg = "/plenario.JPEG";
 
 const ICONS = [ShieldCheck, Users, Landmark, Scale];
 
